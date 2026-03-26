@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Real Estate Viewings form page" />
+			<Item Name="LocalizableStrings.RefreshButton_caption.Value" Value="Refresh" />
+			<Item Name="LocalizableStrings.addRecord_2uzhupc_caption.Value" Value="Add new" />
+		</Items>
+	</Group>
+</Resources>

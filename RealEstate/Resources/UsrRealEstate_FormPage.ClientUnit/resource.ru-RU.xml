@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="ru-RU">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Страница записи Real Estate" />
+			<Item Name="LocalizableStrings.Button_wo663z7_caption.Value" Value="Создать просмотры" />
+			<Item Name="LocalizableStrings.ExpansionPanel_srejm0x_title.Value" Value="Просмотры недвижимости" />
+			<Item Name="LocalizableStrings.TabContainer_uik2zxe_caption.Value" Value="Просмотры недвижимости" />
+		</Items>
+	</Group>
+</Resources>

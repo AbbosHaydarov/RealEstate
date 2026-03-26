@@ -1,0 +1,10 @@
+﻿{
+  "Descriptor": {
+    "UId": "733161a3-be03-4545-be0d-3f4d75f1d557",
+    "Name": "UsrCreateViewingsForRealEstateViewing",
+    "ModifiedOnUtc": "\/Date(1774510899000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "Create viewings for Real Estate viewing",
+    "DependsOn": []
+  }
+}

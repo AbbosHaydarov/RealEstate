@@ -1,0 +1,35 @@
+﻿{
+  "MetaData": {
+    "Schema": {
+      "ManagerName": "AddonSchemaManager",
+      "UId": "ff53d8c7-360f-4d04-a919-2dae9cbc63cf",
+      "A2": "UsrRealEstateViewingsRelatedPage",
+      "A5": "8410b1d3-c524-43d7-a408-4bb76efe703f",
+      "B1": [],
+      "B2": [],
+      "B3": [],
+      "B6": "9738d7fc-a12d-68e3-3837-8f2d8c5052e6",
+      "B8": "8.3.2.4199",
+      "AD1": "fec42800-6426-42f2-a456-f01bcdf28a2e",
+      "AD2": "EntitySchemaManager",
+      "AD3": "RelatedPage",
+      "AD5": "3a2d6f51-1bfc-4c17-aacb-b53de4866b7c",
+      "AD4": {
+  "Pages": [
+    {
+      "UId": "dbbf3ce7-0f67-4510-02ec-eced75018cf5",
+      "PageSchemaUId": "fdbfa84c-163e-49c9-9440-da2aa14401b0",
+      "IsDefault": true,
+      "IsSspDefault": false,
+      "Actions": {
+        "Add": false
+      },
+      "Role": "a29a3ba5-4b0d-de11-9a51-005056c00008",
+      "TypeColumnValue": null
+    }
+  ],
+  "TypeColumnUId": null
+}
+    }
+  }
+}

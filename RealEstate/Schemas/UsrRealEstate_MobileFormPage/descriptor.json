@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "38dae57f-a04d-4f0b-92a4-dcf68e74b6e1",
+    "Name": "UsrRealEstate_MobileFormPage",
+    "ModifiedOnUtc": "\/Date(1774419709000)\/",
+    "Parent": {
+      "UId": "019c694a-1a3b-4812-b2e5-219b326061ae",
+      "Name": "MobilePageWithTabsFreedomTemplate"
+    },
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Real Estate mobile form page",
+    "DependsOn": []
+  }
+}
