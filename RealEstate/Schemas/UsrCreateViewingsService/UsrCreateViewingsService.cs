@@ -9,31 +9,31 @@ public class UsrCreateViewingsService
 {
 	#region Constants: Private
 
-	// Sample owner names used in rotation for the 5 records.
-	private static readonly string[] OwnerNames = {
-		"John Smith",
-		"Maria Johnson",
-		"Robert Brown",
-		"Emily Davis",
-		"Michael Wilson"
+	private static readonly string[] FirstNames = {
+		"John", "Maria", "Robert", "Emily", "Michael",
+		"Alice", "Bob", "Carol", "David", "Eva",
+		"Frank", "Grace", "Henry", "Iris", "James",
+		"Karen", "Leo", "Mona", "Nathan", "Olivia"
 	};
 
-	// Sample potential client names used in rotation for the 5 records.
-	private static readonly string[] ClientNames = {
-		"Alice Cooper",
-		"Bob Martin",
-		"Carol White",
-		"David Lee",
-		"Eva Garcia"
+	private static readonly string[] LastNames = {
+		"Smith", "Johnson", "Brown", "Davis", "Wilson",
+		"Cooper", "Martin", "White", "Lee", "Garcia",
+		"Taylor", "Anderson", "Thomas", "Jackson", "Harris",
+		"Clark", "Lewis", "Walker", "Hall", "Young"
 	};
 
-	// Sample comments used in rotation for the 5 records.
-	private static readonly string[] Comments = {
+	private static readonly string[] CommentTemplates = {
 		"Scheduled viewing for potential buyer",
 		"Client requested morning viewing",
 		"Follow-up viewing after initial interest",
 		"Group viewing session",
-		"Private viewing arranged"
+		"Private viewing arranged",
+		"Virtual tour requested before in-person visit",
+		"Client arriving from out of town",
+		"Second viewing to confirm purchase decision",
+		"Investor viewing multiple properties",
+		"Viewing with family members present"
 	};
 
 	#endregion
@@ -41,22 +41,24 @@ public class UsrCreateViewingsService
 	#region Methods: Public
 
 	/// <summary>
-	/// Creates input count from SysSettings <c>UsrRealEstateViewings</c> records linked to the specified
-	/// Real Estate object. Viewing date-times start at UtcNow + 1 day and
-	/// increment by 1 day for each subsequent record.
+	/// Creates a number of <c>UsrRealEstateViewings</c> records equal to the
+	/// <c>ViewingsCount</c> system setting value, linked to the specified Real Estate object.
+	/// Viewing date-times start at UtcNow + 1 day and increment by 1 day per record.
+	/// Owner, client, and comment values are generated randomly for each record.
 	/// </summary>
 	/// <param name="userConnection"></param>
 	/// <param name="recordId">Id of the UsrRealEstate record.</param>
-	public void CreateViewings(UserConnection userConnection,Guid recordId)
+	public void CreateViewings(UserConnection userConnection, Guid recordId)
 	{
 		var viewingsCount = Terrasoft.Core.Configuration.SysSettings
-			.GetValue(userConnection,"ViewingsCount", 0);
+			.GetValue(userConnection, "ViewingsCount", 0);
 		// Resolve the UsrRealEstateViewings entity schema once and reuse it.
 		var schema = userConnection.EntitySchemaManager
 			.GetInstanceByName("UsrRealEstateViewings");
 
 		// Base time for date calculation — all offsets are relative to this moment.
 		DateTime baseDate = DateTime.UtcNow;
+		var rng = new Random();
 
 		for (int i = 1; i <= viewingsCount; i++)
 		{
@@ -71,10 +73,15 @@ public class UsrCreateViewingsService
 			// Date-time: first record = now + 1 day, each next = previous + 1 day.
 			entity.SetColumnValue("UsrViewingDateTime", baseDate.AddDays(i));
 
-			// Fill remaining fields with meaningful sample data.
-			entity.SetColumnValue("UsrOwner", OwnerNames[i - 1]);
-			entity.SetColumnValue("UsrPotentialClient", ClientNames[i - 1]);
-			entity.SetColumnValue("UsrComment", Comments[i - 1]);
+			// Randomly combine first and last names for owner and client.
+			string ownerName = FirstNames[rng.Next(FirstNames.Length)] + " "
+				+ LastNames[rng.Next(LastNames.Length)];
+			string clientName = FirstNames[rng.Next(FirstNames.Length)] + " "
+				+ LastNames[rng.Next(LastNames.Length)];
+
+			entity.SetColumnValue("UsrOwner", ownerName);
+			entity.SetColumnValue("UsrPotentialClient", clientName);
+			entity.SetColumnValue("UsrComment", CommentTemplates[rng.Next(CommentTemplates.Length)]);
 
 			entity.Save();
 		}
